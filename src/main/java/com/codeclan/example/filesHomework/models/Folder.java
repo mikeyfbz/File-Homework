@@ -2,7 +2,6 @@ package com.codeclan.example.filesHomework.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +16,7 @@ public class Folder {
 
     private String title;
 
-    @OneToMany
-    @JoinColumn(name = "file", nullable = false)
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
 
     @JsonIgnoreProperties(value = "folders")
