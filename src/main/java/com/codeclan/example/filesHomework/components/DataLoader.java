@@ -47,6 +47,10 @@ public class DataLoader implements ApplicationRunner {
         File file2 = new File("Details", ExtensionType.JAVA, 15);
         fileRepository.save(file2);
 
-
+        folder2.addFile(file1);
+        folder2.addFile(file2);
+        folderRepository.save(folder2);
+        fred.addFolder(folder2);
+        userRepository.save(fred);
     }
 }

@@ -2,6 +2,8 @@ package com.codeclan.example.filesHomework.models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -13,11 +15,17 @@ public class User {
 
     private String name;
 
+    @OneToMany(mappedBy = "user")
+    @JoinColumn(name = "user_id", nullable = false)
+    private List<Folder> folders;
+
     public User() {
     }
 
     public User(String name) {
         this.name = name;
+        this.folders = new ArrayList<>();
+
     }
 
     public Long getId() {
@@ -34,5 +42,17 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Folder> getFolders() {
+        return folders;
+    }
+
+    public void setFolders(List<Folder> folders) {
+        this.folders = folders;
+    }
+
+    public void addFolder(Folder folder){
+        this.folders.add(folder);
     }
 }
